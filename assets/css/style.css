@@ -1,0 +1,14 @@
+.qr-canvas {
+    height: 300px !important;
+    width: 100%;
+    overflow: hidden;
+    background-color: #FFF;
+}
+.qr-canvas canvas,
+.qr-canvas svg{
+    max-width: 300px;
+    height: auto;
+}
+input[type="color"] {
+    height: 37px !important;
+}

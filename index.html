@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QR Code</title>
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+
+    <body>
+        <main class="py-5">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1"
+                            type="button" role="tab" aria-controls="tab1" aria-selected="true">URL</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
+                            role="tab" aria-controls="tab2" aria-selected="false">Text</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
+                            role="tab" aria-controls="tab3" aria-selected="false">Location</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab4-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button"
+                            role="tab" aria-controls="tab4" aria-selected="false">VCard</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab5-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button"
+                            role="tab" aria-controls="tab5" aria-selected="false">WIFI</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab6-tab" data-bs-toggle="tab" data-bs-target="#tab6" type="button"
+                            role="tab" aria-controls="tab6" aria-selected="false">Contact</button>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-12">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading01">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse01" aria-expanded="true" aria-controls="collapse01">
+                                        Enter Content </button>
+                                </h2>
+                                <div id="collapse01" class="accordion-collapse collapse show"
+                                    aria-labelledby="heading01" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="tab-content" id="myTabsContent">
+                                            <div class="tab-pane fade show active" id="tab1" data-tab="url" role="tabpanel"
+                                                aria-labelledby="tab1-tab">
+                                                <div class="form-group">
+                                                    <label for="url" class="form-label">Your Url</label>
+                                                    <input type="url" id="url" name="url" class="form-control"
+                                                        placeholder="http://" value="https://www.example.com">
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab2" data-tab="text" role="tabpanel"
+                                                aria-labelledby="tab2-tab">
+                                                <div class="form-group">
+                                                    <label for="text" class="form-label">Your text</label>
+                                                    <textarea name="text" id="text" class="form-control"
+                                                        rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab3" data-tab="location" role="tabpanel"
+                                                aria-labelledby="tab3-tab">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 col-12 mb-3">
+                                                        <label for="text" class="form-label">Latitude</label>
+                                                        <input type="text" name="longitude" id="latitude"
+                                                            value="57.59326391684986" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-6 col-12 mb-3">
+                                                        <label for="text" class="form-label">Longitude</label>
+                                                        <input type="text" name="longitude" id="longitude"
+                                                            value="27.97664125" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab4" data-tab="vcard" role="tabpanel"
+                                                aria-labelledby="tab4-tab">
+                                                <div class="row form-group">
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="firstname" class="form-label">Firstname</label>
+                                                        <input type="text" name="firstname" id="firstname"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="lastname" class="form-label">Lastname</label>
+                                                        <input type="text" name="lastname" id="lastname"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="organization"
+                                                            class="form-label">Organization</label>
+                                                        <input type="text" name="organization" id="organization"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="position" class="form-label">Position (Work)</label>
+                                                        <input type="text" name="position" id="position"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="phone_work" class="form-label">Phone (Work)</label>
+                                                        <input type="tel" name="phone_work" id="phone_work"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="phone_private" class="form-label">Phone
+                                                            (Private)</label>
+                                                        <input type="tel" name="phone_private" id="phone_private"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="phone_mobile" class="form-label">Phone
+                                                            (Mobile)</label>
+                                                        <input type="tel" name="phone_mobile" id="phone_mobile"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="fax_work" class="form-label">Fax (Work)</label>
+                                                        <input type="tel" name="fax_work" id="fax_work"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="fax_private" class="form-label">Fax
+                                                            (Private)</label>
+                                                        <input type="tel" name="fax_private" id="fax_private"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="email" class="form-label">Email</label>
+                                                        <input type="email" name="email" id="email"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="website" class="form-label">Website</label>
+                                                        <input type="url" name="website" id="website"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="street" class="form-label">Street</label>
+                                                        <input type="text" name="street" id="street"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="zipcode" class="form-label">Zipcode</label>
+                                                        <input type="text" name="zipcode" id="zipcode"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="city" class="form-label">City</label>
+                                                        <input type="text" name="city" id="city" class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="state" class="form-label">State</label>
+                                                        <input type="text" name="state" id="state" class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="country" class="form-label">Country</label>
+                                                        <input type="text" name="country" id="country"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab5" data-tab="wifi" role="tabpanel"
+                                                aria-labelledby="tab5-tab">
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="text" class="form-label">Wireless SSID</label>
+                                                        <input type="text" name="ssid" id="ssid" class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="text" class="form-label">Password</label>
+                                                        <input type="text" name="password" id="password"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-4 col-sm-6 col-12 mb-3">
+                                                        <label for="text" class="form-label">Encryption</label>
+                                                        <select name="encryption" id="encryption"
+                                                            class="form-select form-control">
+                                                            <option value="no encryption">no encryption</option>
+                                                            <option value="WEP">WEP</option>
+                                                            <option value="WPA/WPA2">WPA/WPA2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tab6" data-tab="contact" role="tabpanel"
+                                                aria-labelledby="tab6-tab">
+                                                <div class="form-group row">
+                                                    <div class="col-12 mb-3">
+                                                        <label for="phone" class="form-label">Your Phone Number</label>
+                                                        <input type="text" name="phone" id="phone" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading02">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse02" aria-expanded="false" aria-controls="collapse02">
+                                        Set Colors </button>
+                                </h2>
+                                <div id="collapse02" class="accordion-collapse collapse" aria-labelledby="heading02"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 col-12 mb-3">
+                                                <label for="qrBackgroundOptionsColor">Background Color</label>
+                                                <input type="color" id="qrBackgroundOptionsColor" class="form-control py-2">
+                                            </div>
+                                            <div class="col-sm-6 col-12 mb-3">
+                                                <label for="qrOptionsColor">Body Color</label>
+                                                <input type="color" id="qrOptionsColor" class="form-control py-2">
+                                            </div>
+                                            <div class="col-sm-6 col-12 mb-3">
+                                                <label for="qrEyeFrameColor">Eye Frame Color</label>
+                                                <input type="color" id="qrEyeFrameColor" class="form-control py-2">
+                                            </div>
+                                            <div class="col-sm-6 col-12 mb-3">
+                                                <label for="qrEyeBallColor">Eye Ball Color</label>
+                                                <input type="color" id="qrEyeBallColor" class="form-control py-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading03">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse03" aria-expanded="false"
+                                        aria-controls="collapse03">Add Logo Image </button>
+                                </h2>
+                                <div id="collapse03" class="accordion-collapse collapse" aria-labelledby="heading03"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body"> 
+                                        <div class="form-group">
+                                            <input type="file" id="imageInput" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading04">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse04" aria-expanded="false"
+                                        aria-controls="collapse04">Customize Design </button>
+                                </h2>
+                                <div id="collapse04" class="accordion-collapse collapse" aria-labelledby="heading04"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="form-group mb-3">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-3">
+                                                    <label for="qrOptionsType">Body Shape</label>
+                                                    <select name="qrOptionsType" id="qrOptionsType"
+                                                        class="form-control">
+                                                        <option value="rounded">Rounded</option>
+                                                        <option value="dots">Dots</option>
+                                                        <option value="classy">Classy</option>
+                                                        <option value="classy-rounded">Classy Rounded</option>
+                                                        <option value="square">Square</option>
+                                                        <option value="extra-rounded">Extra Rounded</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6 mb-3">
+                                                    <label for="qrEyeFrameType">Eye Frame Shape</label>
+                                                    <select name="qrEyeFrameType" id="qrEyeFrameType"
+                                                        class="form-control">
+                                                        <option value="dot">Dot</option>
+                                                        <option value="square">Square</option>
+                                                        <option value="extra-rounded">Extra Rounded</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6 mb-3">
+                                                    <label for="qrEyeBallType">Eye Ball Shape</label>
+                                                    <select name="qrEyeBallType" id="qrEyeBallType"
+                                                        class="form-control">
+                                                        <option value="dot">Dot</option>
+                                                        <option value="square">Square</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-12">
+                        <div class="text-center">
+                            <div id="qrCanvas" class="qr-canvas"></div>
+                            <div class="form-group">
+                                <input type="range" min="200" max="2000" value="1000" class="form-range" id="dimensions">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Low Quality</span>
+                                    <span id="dimensions"><span class="extension">1000</span> x <span class="extension">1000</span> Px</span>
+                                    <span>High Quality</span>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <button id="download" onclick="createQR()" class="btn btn-primary my-3 flex-grow-1">Create</button>
+                                    <button id="download" onclick="downloadQR()" class="btn btn-success my-3 flex-grow-1">Download</button>
+                                </div>
+                                <div class="d-flex align-items-center gap-2 justify-content-between">
+                                    <label class="d-flex align-items-center gap-1">
+                                        <input type="radio" class="extension" name="extension" value="png" checked>
+                                        <span>PNG</span>
+                                    </label>
+                                    <label class="d-flex align-items-center gap-1">
+                                        <input type="radio" class="extension" name="extension" value="jpeg">
+                                        <span>JPEG</span>
+                                    </label>
+                                    <label class="d-flex align-items-center gap-1">
+                                        <input type="radio" class="extension" name="extension" value="svg">
+                                        <span>SVG</span>
+                                    </label>
+                                    <label class="d-flex align-items-center gap-1">
+                                        <input type="radio" class="extension" name="extension" value="webp">
+                                        <span>WEBP</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script src="./assets/js/jquery-3.6.1.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/node_modules/qr-code-styling/lib/qr-code-styling.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+</html>

@@ -1,0 +1,3 @@
+I want to build an one page responsive website which can generate QR code basis the URL, text, location, vcard, wifi, contact. QR code should be able to generate in multiple colors, design and with icons. I should be able to download the generated QR code in high resolution in jpg, png, eps format. I don't want any other feature. I don't want any database dependency. I want the website with HTML, CSS, JAVASCRIPT.
+
+You can use any open source QR Code JS Library for this. Example: https://qr-code-styling.com/
