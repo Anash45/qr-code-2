@@ -1,10 +1,10 @@
 let qrOptions = {
-    width: 350,
-    height: 350,
+    width: 320,
+    height: 320,
     type: "canvas",
     data: "https://www.example.com/",
     image: '',
-    margin: 10,
+    margin: 5,
     dotsOptions: {
         color: "#000000",
         type: "rounded"
