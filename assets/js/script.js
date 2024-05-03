@@ -23,7 +23,7 @@ let qrOptions = {
     imageOptions: {
         crossOrigin: "anonymous",
         margin: 10,
-        imageSize: 0.6
+        imageSize: 0.4
     }
 };
 
