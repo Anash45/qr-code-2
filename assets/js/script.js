@@ -1,9 +1,10 @@
 let qrOptions = {
-    width: 300,
-    height: 300,
-    type: "svg",
+    width: 350,
+    height: 350,
+    type: "canvas",
     data: "https://www.example.com/",
     image: '',
+    margin: 10,
     dotsOptions: {
         color: "#000000",
         type: "rounded"
@@ -22,7 +23,7 @@ let qrOptions = {
     imageOptions: {
         crossOrigin: "anonymous",
         margin: 10,
-        imageSize: 0.8
+        imageSize: 0.6
     }
 };
 
@@ -33,27 +34,17 @@ qrCode.append(document.getElementById("qrCanvas"));
 function updateQR(options) {
     qrCode.update(options);
 }
-$('#dimensions').on('mousemove', function () {
-    $('.extension').html(this.value);
+$('#dimensions').on('mousemove touchmove', function () {
+    $('.dimension').html(this.value);
 })
-$('#qrOptionsColor').on('change', function () {
-    qrOptions.dotsOptions.color = this.value;
+
+$('#dimensions').on('change', function () {
+    qrOptions.width = parseInt(this.value);
+    qrOptions.height = parseInt(this.value);
     updateQR(qrOptions);
 })
 
-$('#qrBackgroundOptionsColor').on('change', function () {
-    qrOptions.backgroundOptions.color = this.value;
-    updateQR(qrOptions);
-})
 
-$('#qrEyeFrameColor').on('change', function () {
-    qrOptions.cornersSquareOptions.color = this.value;
-    updateQR(qrOptions);
-})
-$('#qrEyeBallColor').on('change', function () {
-    qrOptions.cornersDotOptions.color = this.value;
-    updateQR(qrOptions);
-})
 
 $('#qrOptionsType').on('change', function () {
     qrOptions.dotsOptions.type = this.value;
@@ -70,24 +61,9 @@ $('#qrEyeFrameType').on('change', function () {
 
 
 function downloadQR() {
-    let dimensions = $('#dimensions').val();
-    qrOptions.width = parseInt(dimensions);
-    qrOptions.height = parseInt(dimensions);
-    updateQR(qrOptions);
-
     let extension = $('.extension:checked').val();
     qrCode.download({ name: "qrCode", extension: extension });
-    $('.qr-canvas').css({
-        "opacity": 0
-    })
-    setTimeout(() => {
-        qrOptions.width = parseInt(300);
-        qrOptions.height = parseInt(300);
-        updateQR(qrOptions);
-        $('.qr-canvas').css({
-            "opacity": 1
-        })
-    }, 500);
+
 }
 
 function createQR() {
@@ -218,42 +194,169 @@ $(document).ready(function () {
     $('#imageInput').change(function () {
         // Get the selected file
         var file = this.files[0];
-
-        // Check if the selected file is an image
-        if (!file.type.startsWith('image/')) {
-            alert('Please select an image file.');
-            return;
-        }
-
-        // Check if the selected image is smaller than 2 MB
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Image size exceeds 2 MB limit.');
-            return;
-        }
-
-        // Create a FormData object to send the file data
-        var formData = new FormData();
-        formData.append('image', file);
-
-        // Send the file to the server using AJAX
-        $.ajax({
-            url: './upload.php', // Specify the URL to upload the file
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                // Handle the response from the server
-                console.log('Image uploaded successfully:', response);
-                qrOptions.image = './assets/images/'+response;
-                updateQR(qrOptions);
-            },
-            error: function (xhr, status, error) {
-                // Handle errors
-                console.error('Error uploading image:', error);
+        if (this.files.length > 0) {
+            // Check if the selected file is an image
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file.');
+                return;
             }
-        });
+
+            // Check if the selected image is smaller than 2 MB
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Image size exceeds 2 MB limit.');
+                return;
+            }
+
+            // Create a FormData object to send the file data
+            var formData = new FormData();
+            formData.append('image', file);
+
+            // Send the file to the server using AJAX
+            $.ajax({
+                url: './upload.php', // Specify the URL to upload the file
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Handle the response from the server
+                    console.log('Image uploaded successfully:', response);
+                    qrOptions.image = './assets/images/' + response;
+                    updateQR(qrOptions);
+                },
+                error: function (xhr, status, error) {
+                    // Handle errors
+                    console.error('Error uploading image:', error);
+                }
+            });
+        }
     });
 });
 
 // $('#download').on('click', downloadQR);
+
+$(document).ready(function () {
+    $('.color-input').each(function () {
+        var $colorInput = $(this);
+        var $colorBox = $colorInput.prev('.color-box');
+        var propertyToUpdate;
+
+        // Determine which property to update based on the ID of the input element
+        switch ($colorInput.attr('id')) {
+            case 'qrOptionsColor':
+                propertyToUpdate = 'dotsOptions';
+                break;
+            case 'qrBackgroundOptionsColor':
+                propertyToUpdate = 'backgroundOptions';
+                break;
+            case 'qrEyeFrameColor':
+                propertyToUpdate = 'cornersSquareOptions';
+                break;
+            case 'qrEyeBallColor':
+                propertyToUpdate = 'cornersDotOptions';
+                break;
+            default:
+                break;
+        }
+
+        console.log(propertyToUpdate);
+        $colorInput.colpick({
+            onChange: function (hsb, hex, rgb, el, bySetColor) {
+                $colorInput.val('#' + hex);
+                console.log('Color:', $colorInput.val());
+                $colorBox.css('background-color', '#' + hex);
+                // Update the appropriate property in qrOptions object based on ID
+                qrOptions[propertyToUpdate].color = '#' + hex;
+
+                // Call the updateQR function with qrOptions
+                updateQR(qrOptions);
+            }
+        });
+    });
+
+})
+
+function checkType() {
+    $('.type-box').removeClass('selected');
+    $('.type-box').each(function () {
+        let selectedLength = $(this).find('input:checked').length;
+        if (selectedLength > 0) {
+            $(this).addClass('selected');
+        }
+    })
+}
+$(document).ready(function () {
+    $('.extension').on('change', checkType);
+    checkType();
+    // Function to handle file input change event
+    $('#imageInput').change(function () {
+        var file = this.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var imgSrc = e.target.result;
+            var imgElem = $('<img>').attr('src', imgSrc);
+
+            var imageDisplay = $('.image-display');
+            // Clear existing image
+            imageDisplay.find('span').hide();
+            // Append new image
+            imageDisplay.append(imgElem);
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Function to handle click event on remove button
+    $('#remove-img').click(function () {
+        var imageDisplay = $('.image-display');
+        // Clear the image display
+        imageDisplay.find('span').show();
+        imageDisplay.find('img').remove();
+
+        qrOptions.image = '';
+        updateQR(qrOptions);
+        // Clear the file input value
+        $('#imageInput').val('');
+
+        // Trigger change event on file input
+        $('#imageInput').trigger('change');
+    });
+    changeIcon();
+});
+
+function changeIcon() {
+
+    $('.tab-pane.active').each(function () {
+        let active_form = $(this).attr('data-tab');
+        $('#heading01').attr('data-active', active_form);
+        console.log(active_form);
+    })
+}
+
+$('.nav-link').on('shown.bs.tab', changeIcon);
+
+function initMap() {
+    let latitude = Number($('#latitude').val());
+    let longitude = Number($('#longitude').val());
+    console.log(latitude, longitude);
+    let map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: latitude, lng: longitude },
+        zoom: 8,
+    });
+
+    let marker = new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: map,
+        draggable: true, // Make the marker draggable
+    });
+
+    // Add event listener to update marker position when it is dragged
+    google.maps.event.addListener(marker, 'dragend', function (event) {
+        console.log(event.latLng.lat(), event.latLng.lng());
+        $('#latitude').val(event.latLng.lat());
+        $('#longitude').val(event.latLng.lng());
+    });
+}

@@ -1,14 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 .qr-canvas {
-    height: 300px !important;
+    height: 350px !important;
     width: 100%;
     overflow: hidden;
     background-color: #FFF;
 }
 .qr-canvas canvas,
-.qr-canvas svg{
-    max-width: 300px;
+.qr-canvas svg {
+    max-width: 350px;
     height: auto;
 }
+
 input[type="color"] {
     height: 37px !important;
+}
+
+body {
+    background-color: #247f4f;
+    font-family: "Open Sans", sans-serif;
+}
+.dimension{
+    font-weight: 600;
+}
+.box {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+    border-radius: 5px;
+    background-color: #e8eef2;
+    overflow: hidden;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+.accordion-button {
+    color: #5F676D !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    gap: 16px;
+    background-color: #FFF;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+.ab-icon-cont {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f8fc;
+}
+
+.accordion-button:not(.collapsed),
+.accordion-button:hover {
+    background-color: #f2f8fc;
+}
+
+.accordion-button .fa-minus {
+    display: none;
+}
+
+.accordion-button:not(.collapsed) .fa-minus {
+    display: block;
+}
+
+.accordion-button:not(.collapsed) .fa-plus {
+    display: none;
+}
+
+.accordion-button::after {
+    display: none !important;
+}
+
+.ab-text {
+    flex: 1;
+}
+
+.ab-plus-minus {
+    display: flex;
+    height: 48px;
+    width: 48px;
+    align-items: center;
+    justify-content: center;
+    color: rgba(111, 120, 127, .5);
+}
+
+.form-control {
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) .ab-icon-cont {
+    background-color: #03a9f4 !important;
+    color: #FFF;
+}
+
+.nav-link {
+    border: 0 !important;
+    background-color: transparent !important;
+    color: #FFF !important;
+    opacity: 0.7;
+    line-height: 56px;
+    padding: 0 11px;
+}
+
+.nav-link.active {
+    opacity: 1 !important;
+    font-weight: 700;
+    border-bottom: 2px solid #FFF !important;
+}
+
+.nav-link:hover {
+    border-bottom: 3px solid #FFF !important;
+}
+
+.accordion-item {
+    margin-bottom: 4px;
+    background-color: transparent;
+    border: 0 !important;
+}
+
+.accordion-body {
+    padding: 16px 0 !important;
+}
+
+.form-control:focus {
+    border-bottom: 1px solid #03a9f4 !important;
+    box-shadow: none !important;
+}
+
+label {
+    color: #6F787F;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.color-cont{
+    display: flex;
+}
+
+.color-box{
+    background-color: #000000;
+    width: 38px;
+    height: 38px;
+    display: block;
+}
+
+.color-input{
+    background-color: #FFF !important;
+    border-bottom: 0 !important;
+    color: #000000 !important;
+}
+
+.color-input:focus{
+    border-bottom: 0 !important;
+}
+
+.image-display{
+    height: 120px;
+    width: 120px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.image-display img{
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+}
+.no-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+    width: 100px;
+    border: 4px dashed #6F787F;
+}
+.type-box{
+    height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #03a9f4;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400 !important;
+    color: #03a9f4;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.type-box:hover,.type-box.selected{
+    background-color: #03a9f4;
+    color: #FFF;
+}
+.type-box input{
+    display: none;
+}
+
+.btn{
+    border-radius: 0 !important;
+}
+
+.btn-success{
+    background-color: #8bc34a;
+    border-color: #8bc34a;
+}
+
+.btn-primary{
+    background-color: #03a9f4;
+    border-color: #03a9f4;
+}
+#heading01 .ab-icon-cont i{
+    display: none;
+}
+
+#heading01[data-active="url"] .url-icon{
+    display: block;
+}
+#heading01[data-active="location"] .location-icon{
+    display: block;
+}
+#heading01[data-active="text"] .text-icon{
+    display: block;
+}
+#heading01[data-active="vcard"] .vcard-icon{
+    display: block;
+}
+#heading01[data-active="wifi"] .wifi-icon{
+    display: block;
+}
+#heading01[data-active="contact"] .contact-icon{
+    display: block;
+}
+
+.map {
+    height: 300px;
+    width: 100%;
 }
