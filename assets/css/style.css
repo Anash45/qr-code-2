@@ -11,6 +11,7 @@
     max-width: 100%;
     display: block;
     height: auto;
+    margin: 0 auto !important;
 }
 
 input[type="color"] {
@@ -246,4 +247,8 @@ label {
 .map {
     height: 300px;
     width: 100%;
+}
+
+.container{
+    max-width: 1100px !important;
 }
